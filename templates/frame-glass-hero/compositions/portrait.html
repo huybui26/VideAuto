@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Glassmorphism Hero · Portrait 9:16</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../index.css" />
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-start="0" data-duration="5" data-width="1080" data-height="1920"
+       data-composition-variables='{"kicker":"HOT NEWS","headline":"Tạo Video Bằng AI","subtitle":"Tự động hoá mọi thứ chỉ với vài click.","brand":"VideAuto"}'>
+    
+    <div class="blob-cont">
+      <div class="blob blob1"></div>
+      <div class="blob blob2"></div>
+      <div class="blob blob3"></div>
+      <div class="blob blob4"></div>
+    </div>
+    
+    <div class="noise"></div>
+
+    <div class="glass-card">
+      <div class="kicker"></div>
+      <h1 class="headline"></h1>
+      <p class="subtitle"></p>
+    </div>
+    
+    <div class="footer">
+      <div class="brand"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.getElementById('root');
+      let vars = {};
+      if (window.__hyperframes && typeof window.__hyperframes.getVariables === 'function') {
+        vars = window.__hyperframes.getVariables();
+      } else {
+        try { vars = JSON.parse(root.getAttribute('data-composition-variables') || '{}'); } catch (e) {}
+      }
+
+      // ── Theme Applicator ──
+      var _t = vars.__theme || {};
+      var _sv = function(n, val) { if (val) root.style.setProperty(n, val); };
+      _sv('--bg-primary', _t.bgPrimary);
+      _sv('--bg-secondary', _t.bgSecondary);
+      _sv('--text-primary', _t.textPrimary);
+      _sv('--text-secondary', _t.textSecondary);
+      _sv('--accent-1', _t.accent1);
+      _sv('--accent-2', _t.accent2);
+      _sv('--blob-1', _t.blob1);
+      _sv('--blob-2', _t.blob2);
+      _sv('--blob-3', _t.blob3);
+
+      if (vars.kicker) document.querySelector('.kicker').innerHTML = vars.kicker;
+      if (vars.headline) document.querySelector('.headline').innerHTML = vars.headline;
+      if (vars.subtitle) document.querySelector('.subtitle').innerHTML = vars.subtitle;
+      if (vars.brand) document.querySelector('.brand').innerHTML = vars.brand;
+    })();
+  </script>
+</body>
+</html>

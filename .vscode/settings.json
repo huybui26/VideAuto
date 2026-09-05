@@ -1,0 +1,7 @@
+{
+  "python.defaultInterpreterPath": "/Users/macbook/VSCode/AI_Gen/OmniVoice/venv/bin/python3",
+  "python.analysis.extraPaths": [
+    "/Users/macbook/VSCode/AI_Gen/OmniVoice/venv/lib/python3.11/site-packages",
+    "/Users/macbook/VSCode/AI_Gen/OmniVoice"
+  ]
+}

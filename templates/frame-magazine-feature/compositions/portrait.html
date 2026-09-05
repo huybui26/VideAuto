@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Magazine Feature · Portrait 9:16</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  #root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255,255,255,0.6);
+    --accent-1: #f59e0b;
+    --accent-2: #ef4444;
+    --blob-1: #b45309;
+    --blob-2: #b91c1c;
+    --blob-3: #d97706;
+
+    position: relative; width: 1080px; height: 1920px;
+    font-family: "Be Vietnam Pro", sans-serif; overflow: hidden; color: #fff;
+  }
+
+  /* Background image */
+  .bg-image {
+    position: absolute; inset: 0; z-index: 0;
+    background-size: cover; background-position: center;
+    animation: slowZoom 8s ease-in-out infinite alternate;
+  }
+  @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+
+  /* Gradient overlay — bottom heavy for text readability */
+  .overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.1) 0%,
+      rgba(0,0,0,0.2) 30%,
+      rgba(0,0,0,0.7) 60%,
+      rgba(0,0,0,0.92) 100%
+    );
+  }
+
+  /* Content stacked at bottom */
+  .content {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 5;
+    padding: 80px 70px 120px;
+  }
+
+  /* Kicker tag */
+  .kicker {
+    display: inline-block; padding: 10px 24px; border-radius: 6px;
+    font-size: 22px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    background: var(--accent-1); color: #000;
+    margin-bottom: 30px;
+    opacity: 0; transform: translateX(-20px);
+    animation: kickerIn 0.6s ease-out 0.4s forwards;
+  }
+  @keyframes kickerIn { to { opacity: 1; transform: translateX(0); } }
+
+  /* Headline */
+  .mag-headline {
+    font-family: "Playfair Display", serif;
+    font-size: 80px; font-weight: 900; line-height: 1.1; letter-spacing: -1px;
+    margin-bottom: 30px;
+    opacity: 0; transform: translateY(30px);
+    animation: headIn 0.8s cubic-bezier(0.16,1,0.3,1) 0.6s forwards;
+  }
+  @keyframes headIn { to { opacity: 1; transform: translateY(0); } }
+
+  /* Decorative line */
+  .deco-line {
+    width: 80px; height: 4px; border-radius: 2px;
+    background: var(--accent-1);
+    margin-bottom: 30px;
+    opacity: 0; animation: lineIn 0.5s ease-out 1.0s forwards;
+  }
+  @keyframes lineIn { from { opacity: 0; width: 0; } to { opacity: 1; width: 80px; } }
+
+  /* Pull quote */
+  .pull-quote {
+    font-family: "Playfair Display", serif; font-style: italic;
+    font-size: 36px; font-weight: 400; line-height: 1.5;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    padding-left: 30px;
+    border-left: 3px solid var(--accent-1);
+    opacity: 0; animation: fadeUp 0.7s ease-out 1.2s forwards;
+  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Credit */
+  .credit {
+    font-size: 20px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    opacity: 0; animation: fadeUp 0.5s ease-out 1.4s forwards;
+  }
+
+  /* Top bar for magazine feel */
+  .top-bar {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 5;
+    padding: 50px 70px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .top-issue {
+    font-size: 20px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    opacity: 0; animation: fadeDown 0.5s ease-out 0.3s forwards;
+  }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 0.5; transform: translateY(0); } }
+  .top-logo {
+    font-family: "Playfair Display", serif;
+    font-size: 28px; font-weight: 900; letter-spacing: 6px; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    opacity: 0; animation: fadeDown 0.5s ease-out 0.3s forwards;
+  }
+</style>
+</head>
+<body>
+  <div
+    id="root"
+    data-composition-id="main"
+    data-start="0"
+    data-duration="5"
+    data-width="1080"
+    data-height="1920"
+    data-composition-variables='{"kicker":"REVIEW","headline":"MacBook Pro M5 — Chiếc laptop hoàn hảo?","pull_quote":"Sau 2 tuần sử dụng, đây là chiếc máy tốt nhất tôi từng dùng.","credit":"Ảnh: Apple","imageUrl":""}'
+  >
+    <div class="bg-image"></div>
+    <div class="overlay"></div>
+    <div class="top-bar">
+      <div class="top-issue"></div>
+      <div class="top-logo"></div>
+    </div>
+    <div class="content">
+      <div class="kicker"></div>
+      <h1 class="mag-headline"></h1>
+      <div class="deco-line"></div>
+      <div class="pull-quote"></div>
+      <div class="credit"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var v = (window.__hyperframes && typeof window.__hyperframes.getVariables === "function") ? window.__hyperframes.getVariables() : {};
+
+      var _t = v.__theme || {};
+      var _r = document.getElementById('root');
+      var _sv = function(n, val) { if (val) _r.style.setProperty(n, val); };
+      _sv('--bg-primary', _t.bgPrimary);
+      _sv('--bg-secondary', _t.bgSecondary);
+      _sv('--text-primary', _t.textPrimary);
+      _sv('--text-secondary', _t.textSecondary);
+      _sv('--accent-1', _t.accent1);
+      _sv('--accent-2', _t.accent2);
+      _sv('--blob-1', _t.blob1);
+      _sv('--blob-2', _t.blob2);
+      _sv('--blob-3', _t.blob3);
+
+      var setText = function(sel, text) {
+        var el = document.querySelector(sel);
+        if (el && text != null) el.textContent = String(text);
+      };
+
+      setText(".kicker", v.kicker);
+      setText(".mag-headline", v.headline);
+      setText(".credit", v.credit);
+
+      var pullEl = document.querySelector(".pull-quote");
+      if (v.pull_quote) { pullEl.textContent = v.pull_quote; } else { pullEl.style.display = 'none'; }
+
+      // Background image
+      if (v.imageUrl) {
+        document.querySelector(".bg-image").style.backgroundImage = "url('" + v.imageUrl + "')";
+      }
+    })();
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = { pause: function () {}, seek: function () {}, paused: function () { return true; } };
+  </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Split Reveal · Portrait 9:16</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  #root {
+    --bg-primary: #020c1a;
+    --bg-secondary: #0a1628;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255,255,255,0.6);
+    --accent-1: #06b6d4;
+    --accent-2: #f97316;
+    --blob-1: #0e7490;
+    --blob-2: #c2410c;
+    --blob-3: #0891b2;
+
+    position: relative; width: 1080px; height: 1920px;
+    font-family: "Be Vietnam Pro", sans-serif; overflow: hidden;
+    display: flex; color: #fff;
+  }
+
+  /* Left panel */
+  .panel-left {
+    position: absolute; top: 0; left: 0; width: 540px; height: 1920px;
+    background: linear-gradient(160deg, var(--accent-1), color-mix(in srgb, var(--accent-1) 60%, #000));
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 60px 50px; z-index: 2;
+    transform: translateX(-100%);
+    animation: slideInLeft 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+  }
+  @keyframes slideInLeft { to { transform: translateX(0); } }
+
+  /* Right panel */
+  .panel-right {
+    position: absolute; top: 0; right: 0; width: 540px; height: 1920px;
+    background: linear-gradient(200deg, var(--accent-2), color-mix(in srgb, var(--accent-2) 60%, #000));
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 60px 50px; z-index: 2;
+    transform: translateX(100%);
+    animation: slideInRight 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s forwards;
+  }
+  @keyframes slideInRight { to { transform: translateX(0); } }
+
+  /* Labels */
+  .panel-label {
+    font-size: 28px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+    opacity: 0.7; margin-bottom: 40px;
+    padding: 10px 28px; border-radius: 999px;
+    border: 2px solid rgba(255,255,255,0.3);
+    opacity: 0; animation: fadeIn 0.5s ease-out 1.0s forwards;
+  }
+  @keyframes fadeIn { to { opacity: 0.7; } }
+
+  /* Panel text */
+  .panel-text {
+    font-size: 60px; font-weight: 800; text-align: center; line-height: 1.25;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    opacity: 0; transform: translateY(30px);
+    animation: textUp 0.7s cubic-bezier(0.16,1,0.3,1) 1.2s forwards;
+  }
+  @keyframes textUp { to { opacity: 1; transform: translateY(0); } }
+
+  /* Center divider */
+  .divider-center {
+    position: absolute; left: 50%; top: 50%; z-index: 10;
+    transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .divider-line {
+    width: 6px; height: 300px; background: #fff; border-radius: 3px;
+    opacity: 0; transform: scaleY(0);
+    animation: lineGrow 0.6s cubic-bezier(0.16,1,0.3,1) 0.6s forwards;
+  }
+  @keyframes lineGrow { to { opacity: 0.8; transform: scaleY(1); } }
+
+  .divider-badge {
+    margin-top: 20px; margin-bottom: 20px;
+    padding: 16px 36px; border-radius: 999px;
+    font-size: 30px; font-weight: 800; letter-spacing: 3px;
+    background: #fff; color: #000;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    opacity: 0; transform: scale(0.5);
+    animation: badgePop 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.9s forwards;
+  }
+  @keyframes badgePop { to { opacity: 1; transform: scale(1); } }
+
+  .divider-line-bottom {
+    width: 6px; height: 300px; background: #fff; border-radius: 3px;
+    opacity: 0; transform: scaleY(0);
+    animation: lineGrow 0.6s cubic-bezier(0.16,1,0.3,1) 0.6s forwards;
+  }
+
+  /* Panel icon */
+  .panel-icon {
+    font-size: 80px; margin-bottom: 30px;
+    opacity: 0; transform: scale(0.5);
+    animation: badgePop 0.6s cubic-bezier(0.34,1.56,0.64,1) 1.4s forwards;
+  }
+</style>
+</head>
+<body>
+  <div
+    id="root"
+    data-composition-id="main"
+    data-start="0"
+    data-duration="5"
+    data-width="1080"
+    data-height="1920"
+    data-composition-variables='{"left_label":"TRƯỚC","left_text":"Viết code thủ công","left_icon":"⏳","right_label":"SAU","right_text":"AI viết code cho bạn","right_icon":"🚀","divider_text":"VS"}'
+  >
+    <div class="panel-left">
+      <div class="panel-label left-label"></div>
+      <div class="panel-icon left-icon"></div>
+      <div class="panel-text left-text"></div>
+    </div>
+    <div class="panel-right">
+      <div class="panel-label right-label"></div>
+      <div class="panel-icon right-icon"></div>
+      <div class="panel-text right-text"></div>
+    </div>
+    <div class="divider-center">
+      <div class="divider-line"></div>
+      <div class="divider-badge"></div>
+      <div class="divider-line-bottom"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var v = (window.__hyperframes && typeof window.__hyperframes.getVariables === "function") ? window.__hyperframes.getVariables() : {};
+
+      var _t = v.__theme || {};
+      var _r = document.getElementById('root');
+      var _sv = function(n, val) { if (val) _r.style.setProperty(n, val); };
+      _sv('--bg-primary', _t.bgPrimary);
+      _sv('--bg-secondary', _t.bgSecondary);
+      _sv('--text-primary', _t.textPrimary);
+      _sv('--text-secondary', _t.textSecondary);
+      _sv('--accent-1', _t.accent1);
+      _sv('--accent-2', _t.accent2);
+      _sv('--blob-1', _t.blob1);
+      _sv('--blob-2', _t.blob2);
+      _sv('--blob-3', _t.blob3);
+
+      var setText = function(sel, text) {
+        var el = document.querySelector(sel);
+        if (el && text != null) el.textContent = String(text);
+      };
+
+      setText(".left-label", v.left_label);
+      setText(".left-text", v.left_text);
+      setText(".left-icon", v.left_icon);
+      setText(".right-label", v.right_label);
+      setText(".right-text", v.right_text);
+      setText(".right-icon", v.right_icon);
+      setText(".divider-badge", v.divider_text || "VS");
+    })();
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = { pause: function () {}, seek: function () {}, paused: function () { return true; } };
+  </script>
+</body>
+</html>

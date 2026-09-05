@@ -1,0 +1,71 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+#root {
+  /* Theme defaults */
+  --bg-primary: #000; --bg-secondary: #151517;
+  --text-primary: #fff; --text-secondary: rgba(255,255,255,0.5);
+  --accent-1: #FF3366; --accent-2: #7C3AED;
+  --blob-1: #FF3366; --blob-2: #7C3AED; --blob-3: #06B6D4;
+  position: relative; width: 1080px; height: 1920px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+
+.bento-container {
+  width: 900px;
+  display: flex; flex-direction: column; gap: 40px;
+}
+
+.bento-box {
+  background: var(--bg-secondary);
+  border-radius: 80px;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.8), inset 0 2px 20px rgba(255,255,255,0.02);
+  
+  opacity: 0; transform: scale(0.9) translateY(60px);
+  animation: popIn 1s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+.hero-box {
+  height: 640px; padding: 80px;
+  animation-delay: 0.2s;
+}
+
+.bento-bottom {
+  display: flex; gap: 40px; height: 460px;
+}
+
+.small-box {
+  flex: 1; padding: 60px 40px;
+}
+
+.box1 { animation-delay: 0.35s; }
+.box2 { animation-delay: 0.5s; }
+
+@keyframes popIn {
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.stat-label {
+  font-family: 'Outfit', sans-serif; font-size: 42px; font-weight: 700; letter-spacing: 5px;
+  color: rgba(255,255,255,0.4); text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero-stat {
+  font-family: 'Outfit', sans-serif; font-size: 260px; font-weight: 800; line-height: 1;
+  letter-spacing: -6px;
+  background: linear-gradient(135deg, #34e0c0 0%, #22d3ee 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.icon {
+  font-size: 150px; line-height: 1; margin-bottom: 40px;
+}
+
+.text {
+  font-size: 48px; font-weight: 600; line-height: 1.35; color: rgba(255,255,255,0.9);
+}

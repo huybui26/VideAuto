@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Bento Grid Body · Portrait 9:16</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../index.css" />
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-start="0" data-duration="5" data-width="1080" data-height="1920"
+       data-composition-variables='{"hero_stat":"85%","stat_label":"HIỆU NĂNG","box1_icon":"🚀","box1_text":"Tốc độ x2","box2_icon":"🔋","box2_text":"Tiết kiệm pin"}'>
+    
+    <div class="bento-container">
+      <div class="bento-box hero-box">
+        <div class="stat-label"></div>
+        <div class="hero-stat"></div>
+      </div>
+      
+      <div class="bento-bottom">
+        <div class="bento-box small-box box1">
+          <div class="icon" id="box1-icon"></div>
+          <div class="text" id="box1-text"></div>
+        </div>
+        
+        <div class="bento-box small-box box2">
+          <div class="icon" id="box2-icon"></div>
+          <div class="text" id="box2-text"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      const root = document.getElementById('root');
+      let vars = {};
+      if (window.__hyperframes && typeof window.__hyperframes.getVariables === 'function') {
+        vars = window.__hyperframes.getVariables();
+      } else {
+        try { vars = JSON.parse(root.getAttribute('data-composition-variables') || '{}'); } catch (e) {}
+      }
+
+      // ── Theme Applicator ──
+      var _t = vars.__theme || {};
+      var _sv = function(n, val) { if (val) root.style.setProperty(n, val); };
+      _sv('--bg-primary', _t.bgPrimary);
+      _sv('--bg-secondary', _t.bgSecondary);
+      _sv('--text-primary', _t.textPrimary);
+      _sv('--text-secondary', _t.textSecondary);
+      _sv('--accent-1', _t.accent1);
+      _sv('--accent-2', _t.accent2);
+      _sv('--blob-1', _t.blob1);
+      _sv('--blob-2', _t.blob2);
+      _sv('--blob-3', _t.blob3);
+
+      if (vars.stat_label) document.querySelector('.stat-label').innerHTML = vars.stat_label;
+      if (vars.hero_stat) document.querySelector('.hero-stat').innerHTML = vars.hero_stat;
+      
+      if (vars.box1_icon) document.getElementById('box1-icon').innerHTML = vars.box1_icon;
+      if (vars.box1_text) document.getElementById('box1-text').innerHTML = vars.box1_text;
+      
+      if (vars.box2_icon) document.getElementById('box2-icon').innerHTML = vars.box2_icon;
+      if (vars.box2_text) document.getElementById('box2-text').innerHTML = vars.box2_text;
+    })();
+  </script>
+</body>
+</html>

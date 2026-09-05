@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Image Hero · Portrait 9:16</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  /*
+   * frame-image-hero — PORTRAIT 9:16 (1080×1920).
+   * A hero template that uses an AI-generated or stock background image,
+   * with a dark gradient overlay and prominent text.
+   */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+  #root {
+
+                /* Theme defaults */
+                --bg-primary: #f5f2ef;
+                --bg-secondary: #ede8e3;
+                --text-primary: #1c1410;
+                --text-secondary: rgba(28,20,16,0.55);
+                --accent-1: #d8000f;
+                --accent-2: #5ce1e6;
+                --blob-1: #2a4a6e;
+                --blob-2: #1a3a5e;
+                --blob-3: #3a5a7e;
+
+    position: relative; width: 1080px; height: 1920px;
+    background: #000; color: #fff;
+    font-family: "Be Vietnam Pro", sans-serif;
+  }
+
+  .bg-image {
+    position: absolute; inset: 0; z-index: 0;
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    opacity: 0; transform: scale(1.1);
+    will-change: transform, opacity;
+    animation: imageZoom 6s ease-out forwards;
+  }
+  @keyframes imageZoom { to { opacity: 1; transform: scale(1.0); } }
+
+  .bg-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.9) 100%);
+    opacity: 0; animation: overlayIn 0.8s ease-out forwards;
+  }
+  @keyframes overlayIn { to { opacity: 1; } }
+
+  .sticker {
+    position: absolute; top: 480px; left: 50%; transform: translateX(-50%) scale(0.5);
+    width: 320px; height: 320px; z-index: 2;
+    background-size: contain; background-position: center; background-repeat: no-repeat;
+    opacity: 0;
+    filter: drop-shadow(0 10px 40px var(--accent-1));
+    /* We use an elastic pop-in animation for a playful sticker feel */
+    animation: stickerPop 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s forwards,
+               stickerFloat 4s ease-in-out infinite 1.8s;
+  }
+  @keyframes stickerPop { 
+    0% { opacity: 0; transform: translateX(-50%) scale(0.5) rotate(-15deg); }
+    100% { opacity: 1; transform: translateX(-50%) scale(1.0) rotate(5deg); } 
+  }
+  @keyframes stickerFloat { 
+    0%, 100% { transform: translateX(-50%) scale(1.0) translateY(0) rotate(5deg); } 
+    50% { transform: translateX(-50%) scale(1.0) translateY(-20px) rotate(0deg); } 
+  }
+
+  /* top kicker */
+  .kicker { position: absolute; top: 130px; left: 80px; right: 80px;
+    display: flex; align-items: center; gap: 24px; }
+  .kicker .label { font-size: 26px; font-weight: 700; letter-spacing: 5px;
+    text-transform: uppercase; color: #e8f4fd; white-space: nowrap;
+    opacity: 0; animation: fade 0.5s ease-out 0.35s forwards; }
+  .kicker .rule { flex: 1; height: 3px; background: #5ce1e6; transform-origin: left center;
+    transform: scaleX(0); animation: ruleX 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s forwards; }
+  .kicker .date { font-size: 24px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; color: #7ec8e3; white-space: nowrap;
+    opacity: 0; animation: fade 0.5s ease-out 0.55s forwards; }
+  @keyframes ruleX { to { transform: scaleX(1); } }
+
+  /* giant gradient figure near the top */
+  .figure { position: absolute; top: 280px; right: 70px;
+    font-family: "Be Vietnam Pro", sans-serif; font-weight: 900;
+    font-size: 360px; line-height: 0.8; letter-spacing: -1px;
+    background: linear-gradient(135deg, #ff8c00 0%, #e63000 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    opacity: 0; transform: translateY(-60px) rotate(-14deg);
+    animation: figureIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.7s forwards; }
+  @keyframes figureIn { to { opacity: 1; transform: translateY(0) rotate(-6deg); } }
+
+  /* three-line headline */
+  .head { position: absolute; left: 80px; right: 80px; top: 840px;
+    font-family: "Be Vietnam Pro", sans-serif; font-weight: 900; line-height: 1.35; }
+  .head .ln { display: block; font-size: 124px; opacity: 0; transform: translateY(40px); white-space: nowrap; padding-bottom: 10px; }
+  .head .ln1 { color: #e8f4fd; transform-origin: left bottom; animation: lineUp 0.7s cubic-bezier(0.16,1,0.3,1) 1.15s forwards; }
+  .head .ln2 { color: #5ce1e6; animation: lineUpTilt 0.7s cubic-bezier(0.16,1,0.3,1) 1.35s forwards; }
+  .head .ln3 { color: #e8f4fd; animation: lineUpTilt2 0.7s cubic-bezier(0.16,1,0.3,1) 1.55s forwards; }
+  @keyframes lineUp { to { opacity: 1; transform: translateY(0) rotate(-2deg); } }
+  @keyframes lineUpTilt { to { opacity: 1; transform: translateY(0) rotate(-4deg); } }
+  @keyframes lineUpTilt2 { to { opacity: 1; transform: translateY(0) rotate(2deg); } }
+
+  /* standfirst */
+  .standfirst { position: absolute; left: 84px; right: 84px; top: 1450px;
+    font-family: "Be Vietnam Pro", sans-serif; font-style: italic; font-weight: 500;
+    font-size: 40px; line-height: 1.45; color: #a0c8df;
+    opacity: 0; animation: fadeUp 0.7s ease-out 1.95s forwards; }
+  @keyframes fadeUp { 0%{opacity:0;transform:translateY(22px)} 100%{opacity:1;transform:translateY(0)} }
+
+  /* footer */
+  .footer { position: absolute; left: 80px; right: 80px; bottom: 130px; }
+  .footer .rule { height: 2px; background: #2a4a6e; transform-origin: left center;
+    transform: scaleX(0); animation: ruleX 0.7s cubic-bezier(0.16,1,0.3,1) 2.15s forwards; }
+  .footer .meta { display: flex; justify-content: space-between; margin-top: 18px;
+    font-size: 22px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    color: #7ec8e3; opacity: 0; animation: fade 0.6s ease-out 2.4s forwards; }
+  .footer .meta .red { color: #5ce1e6; }
+
+  @keyframes fade { to { opacity: 1; } }
+
+  /* floating bubbles */
+  @keyframes fb1 { 0%,100%{transform:translate(0,0) scale(1)} 40%{transform:translate(22px,-38px) scale(1.06)} 70%{transform:translate(-16px,-18px) scale(0.94)} }
+  @keyframes fb2 { 0%,100%{transform:translate(0,0) scale(1.02)} 35%{transform:translate(-28px,26px) scale(0.92)} 68%{transform:translate(18px,-32px) scale(1.08)} }
+  @keyframes fb3 { 0%,100%{transform:translate(0,0) scale(0.96)} 45%{transform:translate(16px,34px) scale(1.1)} 80%{transform:translate(-20px,14px) scale(0.94)} }
+  @keyframes fb4 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-26px,-26px) scale(1.07)} }
+  .bubble {
+    position: absolute; border-radius: 50%; pointer-events: none; z-index: 1;
+  }
+  .bb1 {
+    width: 110px; height: 110px; top: 10%; left: 7%;
+    background: radial-gradient(circle at 35% 35%, rgba(92,225,230,0.18), rgba(92,225,230,0.03));
+    border: 1.5px solid rgba(92,225,230,0.15);
+    box-shadow: 0 0 28px rgba(92,225,230,0.1), inset 0 0 18px rgba(92,225,230,0.05);
+    animation: fb1 15s ease-in-out infinite;
+  }
+  .bb2 {
+    width: 76px; height: 76px; top: 35%; right: 8%;
+    background: radial-gradient(circle at 35% 30%, rgba(56,189,248,0.2), rgba(56,189,248,0.03));
+    border: 1.5px solid rgba(56,189,248,0.16);
+    box-shadow: 0 0 22px rgba(56,189,248,0.12), inset 0 0 14px rgba(56,189,248,0.05);
+    animation: fb2 11s ease-in-out infinite;
+  }
+  .bb3 {
+    width: 140px; height: 140px; bottom: 15%; right: 6%;
+    background: radial-gradient(circle at 40% 35%, rgba(129,140,248,0.14), rgba(129,140,248,0.02));
+    border: 1.5px solid rgba(129,140,248,0.12);
+    box-shadow: 0 0 32px rgba(129,140,248,0.09), inset 0 0 20px rgba(129,140,248,0.04);
+    animation: fb3 17s ease-in-out infinite;
+  }
+  .bb4 {
+    width: 64px; height: 64px; bottom: 30%; left: 5%;
+    background: radial-gradient(circle at 38% 32%, rgba(140,82,255,0.2), rgba(140,82,255,0.03));
+    border: 1.5px solid rgba(140,82,255,0.14);
+    box-shadow: 0 0 18px rgba(140,82,255,0.1), inset 0 0 10px rgba(140,82,255,0.04);
+    animation: fb4 9s ease-in-out infinite;
+  }
+
+    .asset-image {
+      display: none;
+      position: absolute;
+      background-size: cover;
+      background-position: center;
+      border-radius: 40px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+      border: 10px solid white;
+      z-index: 5;
+    }
+    .asset-image.placement-hero {
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 80%; height: 60%;
+      animation: floatAsset 6s ease-in-out infinite;
+    }
+    .asset-image.placement-thumbnail {
+      top: 100px; right: 60px;
+      width: 350px; height: 350px;
+      animation: floatAssetThumb 6s ease-in-out infinite;
+    }
+    .asset-image.placement-overlay {
+      bottom: 250px; left: 60px;
+      width: 500px; height: 500px;
+      animation: floatAssetOverlay 6s ease-in-out infinite;
+    }
+    @keyframes floatAsset {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0) rotate(2deg); }
+      50% { transform: translate(-50%, -50%) translateY(-20px) rotate(0deg); }
+    }
+    @keyframes floatAssetThumb {
+      0%, 100% { transform: translateY(0) rotate(-4deg); }
+      50% { transform: translateY(-10px) rotate(-2deg); }
+    }
+    @keyframes floatAssetOverlay {
+      0%, 100% { transform: translateY(0) rotate(5deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
+    }
+
+</style>
+</head>
+<body>
+  <div
+    id="root"
+    data-composition-id="main"
+    data-start="0"
+    data-duration="5"
+    data-width="1080"
+    data-height="1920"
+    data-composition-variables='{"kicker":"AI Visual Layer","headline":["Pexels","Image","Hero"],"standfirst":"High quality background images fetched via AI search queries.","imageUrl":"","iconUrl":""}'
+  >
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+    <div class="asset-image"></div>
+    <div class="sticker"></div>
+    
+    <div class="bubble bb1"></div>
+    <div class="bubble bb2"></div>
+    <div class="bubble bb3"></div>
+    <div class="bubble bb4"></div>
+
+    <div class="kicker">
+      <span class="label"></span>
+      <span class="rule"></span>
+      <span class="date"></span>
+    </div>
+
+    <div class="figure"></div>
+
+    <div class="head">
+      <span class="ln ln1"></span>
+      <span class="ln ln2"></span>
+      <span class="ln ln3"></span>
+    </div>
+
+    <div class="standfirst"></div>
+
+    <div class="footer">
+      <div class="rule"></div>
+      <div class="meta">
+        <span class="meta-left"></span>
+        <span class="red meta-right"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var v = (window.__hyperframes &&
+               typeof window.__hyperframes.getVariables === "function")
+        ? window.__hyperframes.getVariables() : {};
+
+                // ── Theme Applicator ──
+                var _t = v.__theme || {};
+                var _r = document.getElementById('root');
+                var _sv = function(n, val) { if (val) _r.style.setProperty(n, val); };
+                _sv('--bg-primary', _t.bgPrimary);
+                _sv('--bg-secondary', _t.bgSecondary);
+                _sv('--text-primary', _t.textPrimary);
+                _sv('--text-secondary', _t.textSecondary);
+                _sv('--accent-1', _t.accent1);
+                _sv('--accent-2', _t.accent2);
+                _sv('--blob-1', _t.blob1);
+                _sv('--blob-2', _t.blob2);
+                _sv('--blob-3', _t.blob3);
+      var set = function (sel, text) {
+        var el = document.querySelector(sel);
+        if (el && text != null) {
+          // Add a space before emojis if missing
+          var spacedText = String(text).replace(/([a-zA-ZÀ-ỹ])([\uD83C-\uDBFF\uDC00-\uDFFF]+)/g, '$1 $2');
+          el.textContent = spacedText;
+        }
+      };
+      var head = Array.isArray(v.headline) ? v.headline : [];
+      set(".kicker .label", v.kicker);
+      set(".kicker .date", v.date);
+      set(".figure", v.figure);
+      set(".head .ln1", head[0]);
+      set(".head .ln2", head[1]);
+      set(".head .ln3", head[2]);
+      set(".standfirst", v.standfirst);
+      set(".footer .meta-left", v.footer_left);
+      set(".footer .meta-right", v.footer_right);
+
+      if (v.imageUrl) {
+        var bgImage = document.querySelector(".bg-image");
+        if (bgImage) {
+          bgImage.style.backgroundImage = "url('" + v.imageUrl + "')";
+        }
+      }
+
+      
+      if (v.assetUrl) {
+        var assetEl = document.querySelector(".asset-image");
+        if (assetEl) {
+          assetEl.style.display = "block";
+          assetEl.style.backgroundImage = "url('" + v.assetUrl + "')";
+          assetEl.classList.add("placement-" + (v.assetPlacement || "overlay"));
+        }
+      }
+
+      if (v.iconUrl) {
+        var sticker = document.querySelector(".sticker");
+        if (sticker) {
+          sticker.style.backgroundImage = "url('" + v.iconUrl + "')";
+        }
+      } else {
+        var sticker = document.querySelector(".sticker");
+        if (sticker) sticker.style.display = "none";
+      }
+
+      // Auto-scale long text lines
+      setTimeout(function() {
+        var hLines = document.querySelectorAll('.head .ln');
+        hLines.forEach(function(el) {
+          if (!el.textContent.trim()) return;
+          var parentW = document.querySelector('.head').clientWidth || 920;
+          var fontSize = 124;
+          el.style.fontSize = fontSize + 'px';
+          var currentW = el.scrollWidth;
+          if (currentW > parentW) {
+            el.style.fontSize = Math.floor(fontSize * (parentW / currentW)) + 'px';
+          }
+        });
+      }, 50);
+    })();
+
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = { pause: function () {}, seek: function () {}, paused: function () { return true; } };
+  </script>
+</body>
+</html>

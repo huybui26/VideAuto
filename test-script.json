@@ -1,0 +1,142 @@
+{
+  "version": "1.0",
+  "renderer": "hyperframes",
+  "metadata": {
+    "title": "Sự Quan Trọng Của Chất Xơ",
+    "source": {
+      "url": "",
+      "domain": "songkhoemoingay.vn",
+      "image": null
+    },
+    "channel": "Sống Khỏe Mỗi Ngày"
+  },
+  "voice": {
+    "provider": "omnivoice",
+    "speed": 1.05
+  },
+  "aspect": "9:16",
+  "bgm": {
+    "mood": "happy",
+    "volume": 0.15
+  },
+  "caption": {
+    "style": "karaoke",
+    "fontSize": 85,
+    "color": "#14532d",
+    "activeColor": "#16a34a",
+    "yOffset": 250
+  },
+  "scenes": [
+    {
+      "id": "scene-1",
+      "type": "hook",
+      "voiceText": "Bạn có biết chín mươi phần trăm người Việt đang ăn thiếu chất xơ mỗi ngày không?",
+      "captionText": "90% người Việt đang ăn THIẾU chất xơ mỗi ngày!",
+      "templateId": "frame-image-hero",
+      "inputs": {
+        "kicker": "DINH DƯỠNG KHOA HỌC",
+        "date": "2026",
+        "figure": "90%",
+        "headline": [
+          "SỰ THẬT SỐC",
+          "THIẾU CHẤT XƠ",
+          "MỖI NGÀY"
+        ],
+        "standfirst": "Hầu hết chúng ta đang bỏ qua vị cứu tinh âm thầm này của hệ tiêu hóa.",
+        "footer_left": "Sống Khỏe Mỗi Ngày",
+        "footer_right": "songkhoemoingay.vn"
+      },
+      "sfx": {
+        "name": "cinematic",
+        "volume": 0.4,
+        "startOffsetSec": 0
+      },
+      "visual": {
+        "searchQuery": "fresh organic green vegetables broccoli avocado on rustic wooden table",
+        "placement": "background"
+      }
+    },
+    {
+      "id": "scene-2",
+      "type": "body",
+      "voiceText": "Thiếu chất xơ làm tăng sáu mươi phần trăm nguy cơ mắc các bệnh về đường ruột và táo bón kinh niên.",
+      "captionText": "Thiếu chất xơ tăng 60% nguy cơ bệnh đường ruột và táo bón.",
+      "templateId": "frame-alert-stat",
+      "inputs": {
+        "top_left": "CẢNH BÁO SỨC KHỎE",
+        "top_right": "NGUY HIỂM",
+        "divider_text": "HỆ TIÊU HÓA KÊU CỨU",
+        "headline": "NGUY CƠ MẮC BỆNH ĐƯỜNG RUỘT",
+        "badge": "BÁO ĐỘNG",
+        "stat_value": "60",
+        "stat_unit": "%",
+        "sub_badge": "TĂNG MẠNH KHI THIẾU XƠ",
+        "progress_percent": 60
+      },
+      "sfx": {
+        "name": "alert",
+        "volume": 0.4,
+        "startOffsetSec": 0
+      }
+    },
+    {
+      "id": "scene-3",
+      "type": "body",
+      "voiceText": "Hãy bổ sung ngay ba siêu thực phẩm giàu chất xơ dễ kiếm sau đây vào bữa ăn hàng ngày nhé.",
+      "captionText": "Hãy bổ sung ngay 3 siêu thực phẩm giàu xơ này vào thực đơn.",
+      "templateId": "frame-aicoding-list",
+      "inputs": {
+        "title": "TOP BA SIÊU THỰC PHẨM",
+        "accent": "GIÀU XƠ NHẤT",
+        "accent_from": "#16a34a",
+        "accent_to": "#eab308",
+        "subtitle": "Rẻ tiền, dễ mua nhưng cực tốt cho tiêu hóa",
+        "items": [
+          {
+            "icon": "🥦",
+            "title": "Bông cải xanh",
+            "desc": "Cực giàu xơ, hỗ trợ thải độc ruột tốt",
+            "tag": "Tốt",
+            "level": "good"
+          },
+          {
+            "icon": "🥑",
+            "title": "Quả bơ",
+            "desc": "Chất xơ hòa tan và chất béo lành mạnh",
+            "tag": "Đỉnh",
+            "level": "info"
+          },
+          {
+            "icon": "🌾",
+            "title": "Yến mạch",
+            "desc": "Giúp no lâu, kiểm soát đường huyết hiệu quả",
+            "tag": "Tuyệt",
+            "level": "good"
+          }
+        ]
+      },
+      "sfx": {
+        "name": "success",
+        "volume": 0.4,
+        "startOffsetSec": 0
+      }
+    },
+    {
+      "id": "scene-4",
+      "type": "outro",
+      "voiceText": "Ăn lành mạnh để sống khỏe mỗi ngày. Đăng ký kênh để biết thêm nhiều mẹo dinh dưỡng hay.",
+      "captionText": "Ăn lành mạnh để sống khỏe mỗi ngày. Đăng ký kênh ngay!",
+      "templateId": "frame-image-outro",
+      "inputs": {
+        "brand_name": "Sống Khỏe Mỗi Ngày",
+        "tagline": "Chia sẻ bí quyết sống lành mạnh mỗi ngày cùng chuyên gia",
+        "primary_url": "songkhoemoingay.vn"
+      },
+      "sfx": {
+        "name": "outro",
+        "volume": 0.4,
+        "startOffsetSec": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Stat Comparison · Portrait 9:16</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  #root {
+
+                /* Theme defaults */
+                --bg-primary: #020c1a;
+                --bg-secondary: #0a1628;
+                --text-primary: #fafaf8;
+                --text-secondary: rgba(250,250,248,0.55);
+                --accent-1: #ff4d6d;
+                --accent-2: #5ce1e6;
+                --blob-1: #1565c0;
+                --blob-2: #0d47a1;
+                --blob-3: #1976d2;
+
+    position: relative; width: 1080px; height: 1920px; 
+    background: #050814; color: #ffffff;
+    font-family: "Be Vietnam Pro", sans-serif; overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 50px;
+  }
+
+  .bg { position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(800px 800px at 20% 30%, rgba(52,224,192,0.1) 0%, transparent 60%),
+      radial-gradient(800px 800px at 80% 60%, rgba(155,81,224,0.1) 0%, transparent 60%); }
+  .grid { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.15;
+    background-image: linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px);
+    background-size: 80px 80px; mask-image: radial-gradient(ellipse at center, #000 0%, transparent 80%); }
+
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+  .stack { position: relative; z-index: 4; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+
+  .badge-top { 
+    padding: 12px 32px; border-radius: 999px; font-size: 24px; font-weight: 700; letter-spacing: 4px;
+    text-transform: uppercase; color: #8e80ff; border: 2px solid rgba(142,128,255,0.4);
+    background: rgba(142,128,255,0.08); opacity: 0; animation: fadeDown 0.7s ease-out 0.2s both; 
+  }
+
+  .headline { 
+    font-size: 85px; font-weight: 800; text-align: center; line-height: 1.15; letter-spacing: -1px;
+    opacity: 0; animation: fadeDown 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s both; 
+    max-width: 900px;
+  }
+  .headline .accent { color: #34e0c0; }
+
+  .cards { display: flex; gap: 30px; width: 100%; justify-content: center; margin-top: 20px; }
+  
+  .card { 
+    flex: 1; border-radius: 32px; padding: 50px 30px;
+    background: rgba(255,255,255,0.02); border: 2px solid rgba(255,255,255,0.1);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    opacity: 0; transform: translateY(30px); animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) both; 
+  }
+  .card.left { animation-delay: 0.7s; }
+  .card.right { animation-delay: 0.9s; }
+
+  .card-label { font-size: 28px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; opacity: 0.9; }
+  .card-value { font-size: 130px; font-weight: 900; line-height: 1; letter-spacing: -1px; margin-bottom: 25px; text-shadow: 0 0 40px currentColor; text-align: center; }
+  .card-sub { font-size: 24px; font-weight: 500; color: rgba(255,255,255,0.5); text-align: center; }
+
+  .badge-bottom { 
+    margin-top: 20px; padding: 14px 40px; border-radius: 999px; font-size: 22px; font-weight: 500;
+    color: rgba(255,255,255,0.6); border: 1.5px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.03); opacity: 0; animation: fadeUp 0.7s ease-out 1.2s both; 
+  }
+
+</style>
+</head>
+<body>
+  <div
+    id="root"
+    data-composition-id="main"
+    data-start="0"
+    data-duration="5"
+    data-width="1080"
+    data-height="1920"
+    data-composition-variables='{"badge_top":"PROMPT CACHING","headline":"Gửi lại prompt cũ, ","headline_accent":"giá giảm một phần lớn.","left":{"label":"LẦN 1","value":"$5.00","sub":"/1M tính đầy đủ","color":"#34e0c0"},"right":{"label":"LẦN 2","value":"$0.50","sub":"/1M đọc từ cache","color":"#9b51e0"},"badge_bottom":"giá tham khảo Claude Opus 5 - GPT-5.5"}'
+  >
+    <div class="bg"></div>
+    <div class="grid"></div>
+
+    <div class="stack">
+      <div class="badge-top"></div>
+      <h1 class="headline"></h1>
+      <div class="cards">
+        <div class="card left">
+          <div class="card-label"></div>
+          <div class="card-value"></div>
+          <div class="card-sub"></div>
+        </div>
+        <div class="card right">
+          <div class="card-label"></div>
+          <div class="card-value"></div>
+          <div class="card-sub"></div>
+        </div>
+      </div>
+      <div class="badge-bottom"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var v = (window.__hyperframes && typeof window.__hyperframes.getVariables === "function") ? window.__hyperframes.getVariables() : {};
+      
+
+                // ── Theme Applicator ──
+                var _t = v.__theme || {};
+                var _r = document.getElementById('root');
+                var _sv = function(n, val) { if (val) _r.style.setProperty(n, val); };
+                _sv('--bg-primary', _t.bgPrimary);
+                _sv('--bg-secondary', _t.bgSecondary);
+                _sv('--text-primary', _t.textPrimary);
+                _sv('--text-secondary', _t.textSecondary);
+                _sv('--accent-1', _t.accent1);
+                _sv('--accent-2', _t.accent2);
+                _sv('--blob-1', _t.blob1);
+                _sv('--blob-2', _t.blob2);
+                _sv('--blob-3', _t.blob3);
+      var setText = function (sel, text) {
+        var el = document.querySelector(sel);
+        if (el && text != null) el.textContent = String(text);
+      };
+
+      var badgeTop = document.querySelector(".badge-top");
+      if (v.badge_top) { badgeTop.textContent = v.badge_top; } else { badgeTop.style.display = 'none'; }
+      
+      var h = document.querySelector(".headline");
+      if (h) {
+        h.textContent = v.headline ? v.headline + " " : "";
+        if (v.headline_accent) {
+          var sp = document.createElement("span"); 
+          sp.className = "accent"; 
+          sp.textContent = v.headline_accent;
+          h.appendChild(sp);
+        }
+      }
+
+      var L = v.left || {};
+      var R = v.right || {};
+
+      var setupCard = function(cls, data) {
+        var card = document.querySelector(cls);
+        if (!card) return;
+        var color = data.color || "#ffffff";
+        card.style.borderColor = color + "40"; // 25% opacity for border using hex alpha
+        card.style.boxShadow = "0 10px 50px " + color + "15"; // Very soft glow behind card
+        
+        var lbl = card.querySelector(".card-label");
+        lbl.textContent = data.label || "";
+        lbl.style.color = color;
+
+        var val = card.querySelector(".card-value");
+        val.textContent = data.value || "";
+        val.style.color = color;
+
+        var sub = card.querySelector(".card-sub");
+        sub.textContent = data.sub || "";
+      }
+
+      setupCard(".card.left", L);
+      setupCard(".card.right", R);
+
+      var badgeBottom = document.querySelector(".badge-bottom");
+      if (v.badge_bottom) { badgeBottom.textContent = v.badge_bottom; } else { badgeBottom.style.display = 'none'; }
+      
+    })();
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = { pause: function () {}, seek: function () {}, paused: function () { return true; } };
+  </script>
+</body>
+</html>

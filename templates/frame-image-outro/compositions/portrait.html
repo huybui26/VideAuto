@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Image Hero · Portrait 9:16</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  /*
+   * frame-image-hero — PORTRAIT 9:16 (1080×1920).
+   * A hero template that uses an AI-generated or stock background image,
+   * with a dark gradient overlay and prominent text.
+   */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+  #root {
+
+                /* Theme defaults */
+                --bg-primary: #f5f2ef;
+                --bg-secondary: #ede8e3;
+                --text-primary: #1c1410;
+                --text-secondary: rgba(28,20,16,0.55);
+                --accent-1: #d8000f;
+                --accent-2: #5ce1e6;
+                --blob-1: #2a4a6e;
+                --blob-2: #1a3a5e;
+                --blob-3: #3a5a7e;
+
+    position: relative; width: 1080px; height: 1920px;
+    background: #000; color: #fff;
+    font-family: "Be Vietnam Pro", sans-serif;
+  }
+
+  .bg-image {
+    position: absolute; inset: 0; z-index: 0;
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    opacity: 0; transform: scale(1.1);
+    will-change: transform, opacity;
+    animation: imageZoom 6s ease-out forwards;
+  }
+  @keyframes imageZoom { to { opacity: 1; transform: scale(1.0); } }
+
+  .bg-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.9) 100%);
+    opacity: 0; animation: overlayIn 0.8s ease-out forwards;
+  }
+  @keyframes overlayIn { to { opacity: 1; } }
+
+  .header-box {
+    position: absolute; top: 150px; left: 80px; right: 80px;
+    display: flex; flex-direction: column; align-items: center; gap: 20px;
+    z-index: 5;
+  }
+  .title-box {
+    font-family: "Be Vietnam Pro", sans-serif; font-weight: 800;
+    font-size: 84px; line-height: 1.2; text-align: center;
+    color: #fff;
+    opacity: 0; transform: translateY(-30px);
+    animation: titleIn 0.8s cubic-bezier(0.16,1,0.3,1) 0.6s forwards;
+  }
+  @keyframes titleIn { to { opacity: 1; transform: translateY(0); } }
+
+  .subtitle-box {
+    font-family: "Be Vietnam Pro", sans-serif; font-weight: 500; font-style: italic;
+    font-size: 48px; line-height: 1.4; text-align: center;
+    color: #5ce1e6;
+    opacity: 0; transform: translateY(-20px);
+    animation: subtitleIn 0.8s cubic-bezier(0.16,1,0.3,1) 0.8s forwards;
+  }
+  @keyframes subtitleIn { to { opacity: 1; transform: translateY(0); } }
+
+  .sticker {
+    position: absolute; top: 550px; left: 50%; transform: translateX(-50%) scale(0.5);
+    width: 600px; height: 600px; z-index: 2;
+    background-size: contain; background-position: center; background-repeat: no-repeat;
+    opacity: 0;
+    filter: drop-shadow(0 10px 50px var(--accent-1));
+    /* We use an elastic pop-in animation for a playful sticker feel */
+    animation: stickerPop 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 1.0s forwards,
+               stickerFloat 5s ease-in-out infinite 2.2s;
+  }
+  @keyframes stickerPop { 
+    0% { opacity: 0; transform: translateX(-50%) scale(0.5) rotate(-15deg); }
+    100% { opacity: 1; transform: translateX(-50%) scale(1.0) rotate(5deg); } 
+  }
+  @keyframes stickerFloat { 
+    0%, 100% { transform: translateX(-50%) scale(1.0) rotate(5deg) translateY(0); } 
+    50% { transform: translateX(-50%) scale(1.0) rotate(-5deg) translateY(-25px); } 
+  }
+</style>
+</head>
+<body>
+  <div
+    id="root"
+    data-composition-id="main"
+    data-start="0"
+    data-duration="5"
+    data-width="1080"
+    data-height="1920"
+    data-composition-variables='{"title":"SỰ THẬT VỀ AI","subtitle":"Trí tuệ nhân tạo đang thay đổi thế giới","imageUrl":"","iconUrl":""}'
+  >
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+    <div class="sticker"></div>
+    
+    <div class="bubble bb1"></div>
+    <div class="bubble bb2"></div>
+    <div class="bubble bb3"></div>
+    <div class="bubble bb4"></div>
+
+    <div class="header-box">
+      <div class="title-box"></div>
+      <div class="subtitle-box"></div>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      var v = (window.__hyperframes &&
+               typeof window.__hyperframes.getVariables === "function")
+        ? window.__hyperframes.getVariables() : {};
+
+                // ── Theme Applicator ──
+                var _t = v.__theme || {};
+                var _r = document.getElementById('root');
+                var _sv = function(n, val) { if (val) _r.style.setProperty(n, val); };
+                _sv('--bg-primary', _t.bgPrimary);
+                _sv('--bg-secondary', _t.bgSecondary);
+                _sv('--text-primary', _t.textPrimary);
+                _sv('--text-secondary', _t.textSecondary);
+                _sv('--accent-1', _t.accent1);
+                _sv('--accent-2', _t.accent2);
+                _sv('--blob-1', _t.blob1);
+                _sv('--blob-2', _t.blob2);
+                _sv('--blob-3', _t.blob3);
+      var set = function (sel, text) {
+        var el = document.querySelector(sel);
+        if (el && text != null) {
+          // Add a space before emojis if missing
+          var spacedText = String(text).replace(/([a-zA-ZÀ-ỹ])([\uD83C-\uDBFF\uDC00-\uDFFF]+)/g, '$1 $2');
+          el.textContent = spacedText;
+        }
+      };
+      set(".title-box", v.brand);
+      set(".subtitle-box", v.cta);
+
+      if (v.imageUrl) {
+        var bgImage = document.querySelector(".bg-image");
+        if (bgImage) {
+          bgImage.style.backgroundImage = "url('" + v.imageUrl + "')";
+        }
+      }
+
+      if (v.iconUrl) {
+        var sticker = document.querySelector(".sticker");
+        if (sticker) {
+          sticker.style.backgroundImage = "url('" + v.iconUrl + "')";
+        }
+      } else {
+        var sticker = document.querySelector(".sticker");
+        if (sticker) sticker.style.display = "none";
+      }
+    })();
+
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = { pause: function () {}, seek: function () {}, paused: function () { return true; } };
+  </script>
+</body>
+</html>
